@@ -2,10 +2,12 @@ package com.example.weatherapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -71,6 +73,8 @@ public class MainActivity extends AppCompatActivity {
         }
     }
     public void onGo(View view){
+        InputMethodManager mgr = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        mgr.hideSoftInputFromWindow(inputName.getWindowToken(),0);
         getData info = new getData();
         String name = inputName.getText().toString();
         try {
